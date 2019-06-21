@@ -13,6 +13,7 @@ import json
 import os
 from datetime import datetime
 from pyproj import Proj, transform
+import load
 
 STORAGE_DIRECTORY = "downloads"
 
@@ -106,7 +107,8 @@ def loop_over_records(records):
     for r in records:
         if is_valid(r):
             transformed = transform_record(r)
-            # TODO: store this in the database
+            load.save_violation(transformed)
+            print(f"Saved {r['ticket_number']}")
 
 
 def do_transform():

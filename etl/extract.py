@@ -46,12 +46,14 @@ def get_url(limit, offset):
 
 def save_to_file(data, n):
     """
-    Save the data structure to a file (name designated by n)
+    Save the data structure to a file (name designated by n).
+    Zero-padding is used when naming the files to help ensure the proper ordering when the directory is read by
+    the transform process.
     :param data: mixed
     :param n: integer
     :return: nil
     """
-    filename = os.path.join(STORAGE_DIRECTORY, f"{n}.json")
+    filename = os.path.join(STORAGE_DIRECTORY, f"{n:010}.json")
     with open(filename, "w") as f:
         json.dump(data, f)
 
@@ -126,6 +128,4 @@ def do_extraction():
 
 
 if __name__ == "__main__":
-    # print(get_url(0,1000))
     do_extraction()
-    # print(os.path.join("api_responses", "something.json"))

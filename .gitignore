@@ -1,7 +1,8 @@
 # Project Specific Files #
 ###################
-
-
+api_responses
+.DS_Store
+.env
 
 # Compiled source #
 ###################

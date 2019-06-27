@@ -32,6 +32,25 @@ We have drop those parking tickets for the conversion of coordinates and save th
 
 ## Running the Application
 
+how to craete requirements txt?
+include creation of new virt env for the project
+pip freeze to give you requirements.txt file
+pip freeze > requirements.txt 
+pip install -r requirements.txt
+
+extrac.py
+transform.py assumes you already have 
+load.py (**record) - double splat function python google it. In relation to key-value pairs.
+
+for meter inventory file
+time_limit = "4HR"
+time_limit[:-2]
+
+Parts of the project:
+ETL
+Analytics in Jupyter Notebook (including map visualizations)
+Machine Learning 
+
 Now you should be able to launch the Flask application:
 
 ```bash

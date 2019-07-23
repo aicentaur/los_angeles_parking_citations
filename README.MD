@@ -1,10 +1,9 @@
 # Parking Meter Revenue Prediction from Parking Citations 
-*IN PROGRESS*
 
 
-<br>
 The purpose of this model is an attempt to predict how much revenue each parking meter can generate from parking citations in Los Angeles.
-<br>
+
+
 
 ## Table of Contents
 1. [Introduction](#intro)
@@ -34,7 +33,7 @@ The purpose of this model is an attempt to predict how much revenue each parking
 
 <p>For this project, data extraction process was automated.</p>
 
-To start your own raw data exploration, clone this repository on your comupter and run `python extract_citations.py` (for parking citations dataset) and `python extract_inventory.py` (for meters inventory dataset) in your terminal window from appropriate folder. It would take about 30-50 minutes to have all json files locally.
+To start your own raw data exploration, clone this repository on your computer and run `python extract_citations.py` (for parking citations dataset) and `python extract_inventory.py` (for meters inventory dataset) in your terminal window from appropriate folder. It would take about 30-50 minutes to have all json files locally.
 
 
 
@@ -44,7 +43,8 @@ To start your own raw data exploration, clone this repository on your comupter a
 <p>Data cleaning and transformation was performed in Jupyter Notebooks.</p>
 
 *Parking Citations* responses contain about 9.5 million records and take about 4 GB of storage space.
-<br>
+
+
 *Meters Inventory* responses contain about 35,000 records and take about 16 MB of storage space.</p>
 
 <p>Due to the large amount of records, data had to be processed in chunks. In this particular example, 2 million records was a comfortable number for the Jupyter Notebook to process without any performance/kernel issues.</p>
@@ -61,21 +61,24 @@ To start your own raw data exploration, clone this repository on your comupter a
 <p>This transormational approach yields 5 csv files (about 1 GB) ready to use for the analysis and visualizations.</p>
 
 *Parking Citations* data munging code can be accessed [here.](https://github.com/aicentaur/los_angeles_parking_citations/blob/master/data_collection_munging/parking_citations/transform_citations.ipynb)
-<br>
+
+
 *Meters Inventory* data munging code can be accessed [here.](https://github.com/aicentaur/los_angeles_parking_citations/blob/master/data_collection_munging/meters_inventory/transform_inventory.ipynb)
 
 <p>The next step is to create a new dataset for our machine learning model by extracting/groupping data from both parking citations and meters inventory datasets.</p>
 
 The code for this step can be found [here.](https://github.com/aicentaur/los_angeles_parking_citations/blob/master/ml_model/ml_model_data_preparation.ipynb)
-<br>
 
-> **IMPORTANT** <br>
-> Latitude and longitude in parking citations dataset are given in accordance with <br>[ESRI:102645 NAD 1983 StatePlane California V FIPS 0405 Feet](https://epsg.io/102645) format.
-<br> In order to use those coordinates for our map visualization, we would need to transform geospatial coordinates from one coordinate reference system to another. <br>
+
+
+> **IMPORTANT**  
+> Latitude and longitude in parking citations dataset are given in accordance with  
+[ESRI:102645 NAD 1983 StatePlane California V FIPS 0405 Feet](https://epsg.io/102645) format.  
+In order to use those coordinates for our map visualization, we would need to transform geospatial coordinates from one coordinate reference system to another.  
 Python offers [PROJ](https://proj.org/index.html) library for performing conversions between cartographic projections.
-> <p>1,401,193 (approximately 15% of total) parking tickets have latitude and longitude with 9.999900e+04 values.<br>
-> Conversion of those values gives us location in the Pacific Ocean, thus we cannot use them for our visualization.<br>
-> We have drop those parking tickets for the conversion of coordinates step and save them in a separate csv file.</p>
+> 1,401,193 (approximately 15% of total) parking tickets have latitude and longitude with 9.999900e+04 values.  
+Conversion of those values gives us location in the Pacific Ocean, thus we cannot use them for our visualization.  
+We have drop those parking tickets for the conversion of coordinates step and save them in a separate csv file.
 
 
 <a name="ml"></a>
